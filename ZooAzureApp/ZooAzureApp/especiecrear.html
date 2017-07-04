@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" href="../../assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Especies</title>
+	<title>Crear Especie</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -28,7 +28,6 @@
 
 </head>
 <body>
-
     <div class="wrapper">
         <div class="sidebar" data-color="orange" data-image="../../assets/img/full-screen-image-3.jpg">
             <!--
@@ -37,7 +36,6 @@
                 Tip 2: you can also add an image using data-image tag
 
             -->
-
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="logo-text">
                     Creative Tim
@@ -48,16 +46,14 @@
                     Ct
                 </a>
             </div>
-
             <div class="sidebar-wrapper">
-
                 <div class="user">
                     <div class="photo">
                         <img src="../../assets/img/default-avatar.png" />
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                            Tania Andrew
+                            Andrew
                             <b class="caret"></b>
                         </a>
                         <div class="collapse" id="collapseExample">
@@ -69,7 +65,6 @@
                         </div>
                     </div>
                 </div>
-
                 <ul class="nav">
                     <li>
                         <a href="../dashboard.html">
@@ -97,43 +92,40 @@
                             </ul>
                         </div>
                     </li>
-
-                    <li>
-                        <a data-toggle="collapse" href="#formsExamples">
+                    <li class="active">
+                        <a data-toggle="collapse" href="#formsExamples" aria-expanded="true">
                             <i class="pe-7s-note2"></i>
                             <p>
                                 Forms
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="formsExamples">
+                        <div class="collapse in" id="formsExamples">
                             <ul class="nav">
-                                <li><a href="../forms/regular.html">Regular Forms</a></li>
-                                <li><a href="../forms/extended.html">Extended Forms</a></li>
-                                <li><a href="../forms/validation.html">Validation Forms</a></li>
-                                <li><a href="../forms/wizard.html">Wizard</a></li>
+                                <li><a href="regular.html">Regular Forms</a></li>
+                                <li><a href="extended.html">Extended Forms</a></li>
+                                <li class="active"><a href="validation.html">Validation Forms</a></li>
+                                <li><a href="wizard.html">Wizard</a></li>
                             </ul>
                         </div>
                     </li>
-
-                    <li class="active">
-                        <a data-toggle="collapse" href="#tablesExamples" aria-expanded="true">
+                    <li>
+                        <a data-toggle="collapse" href="#tablesExamples">
                             <i class="pe-7s-news-paper"></i>
                             <p>
                                 Tables
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse in" id="tablesExamples">
+                        <div class="collapse" id="tablesExamples">
                             <ul class="nav">
-                                <li><a href="regular.html">Regular Tables</a></li>
-                                <li><a href="extended.html">Extended Tables</a></li>
-                                <li><a href="bootstrap-table.html">Bootstrap Table</a></li>
-                                <li class="active"><a href="datatables.net.html">DataTables.net</a></li>
+                                <li><a href="../tables/regular.html">Regular Tables</a></li>
+                                <li><a href="../tables/extended.html">Extended Tables</a></li>
+                                <li><a href="../tables/bootstrap-table.html">Bootstrap Table</a></li>
+                                <li><a href="../tables/datatables.net.html">DataTables.net</a></li>
                             </ul>
                         </div>
                     </li>
-
                     <li>
                         <a data-toggle="collapse" href="#mapsExamples">
                             <i class="pe-7s-map-marker"></i>
@@ -150,21 +142,18 @@
                             </ul>
                         </div>
                     </li>
-
                     <li>
                         <a href="../charts.html">
                             <i class="pe-7s-graph1"></i>
                             <p>Charts</p>
                         </a>
                     </li>
-
                     <li>
                         <a href="../calendar.html">
                             <i class="pe-7s-date"></i>
                             <p>Calendar</p>
                         </a>
                     </li>
-
                     <li>
                         <a data-toggle="collapse" href="#pagesExamples">
                             <i class="pe-7s-gift"></i>
@@ -186,7 +175,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="main-panel">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -203,17 +191,15 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Especies</a>
+                        <a class="navbar-brand" href="#">Validation Forms</a>
                     </div>
                     <div class="collapse navbar-collapse">
-
                         <form class="navbar-form navbar-left navbar-search-form" role="search">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                <input type="text" value="" class="form-control" placeholder="Buscar...">
+                                <input type="text" value="" class="form-control" placeholder="Search...">
                             </div>
                         </form>
-
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="../charts.html">
@@ -221,7 +207,6 @@
                                     <p>Stats</p>
                                 </a>
                             </li>
-
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-gavel"></i>
@@ -239,7 +224,6 @@
                                     <li><a href="#">Another Action</a></li>
                                 </ul>
                             </li>
-
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-bell-o"></i>
@@ -257,7 +241,6 @@
                                     <li><a href="#">Another notification</a></li>
                                 </ul>
                             </li>
-
                             <li class="dropdown dropdown-with-icons">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-list"></i>
@@ -296,37 +279,90 @@
                                     </li>
                                 </ul>
                             </li>
-
                         </ul>
                     </div>
                 </div>
             </nav>
 
-
-
             <div class="content">
                 <div class="container-fluid">
-
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="row"><!--<div class="loader"></div>-->
+                        <div class="col-md-6">
                             <div class="card">
-                                <div class="content">
-                                    <div class="toolbar">
-                                        <button type="button" class="btn btn-info btn-fill btn-wd" id="btnCrear" style="margin-bottom:20px;">Crear Nuevo</button>   
-                                    </div>
-                                    <div class="fresh-datatables">
-                                        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width:"100%" style="width:100%">
-                                        
-                                        </table>
-                                    </div>
-                                </div><!-- end content-->
-                            </div><!--  end card  -->
-                        </div> <!-- end col-md-12 -->
-                    </div> <!-- end row -->
+                                <form id="registerFormValidation" action="/" method="POST" novalidate="">
+                                    <div class="header">Insertar Especie</div>
+                                    <div class="content">
+                                        <div class="form-group">
+                                            <label class="control-label">Nombre <star>*</star></label>
+                                            <input class="form-control"
+                                                   name="nombre"
+                                                   id="nombre"
+                                                   type="text"
+                                                   required />
+                                        </div>
 
-                </div>
-            </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Nº de Patas <star>*</star></label>
+                                            <input class="form-control"
+                                                   name="nPatas"
+                                                   id="nPatas"
+                                                   type="number"
+                                                   required
+                                                   step="1"
+                                                   min="0" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Clasificación<star>*</star></label>
+                                            <select id="idClasificacion"
+                                                    name="idClasificacion"
+                                                    required
+                                                    class="form-control"
+                                                    data-title="Seleccionar..."
+                                                    data-style="btn-default btn-block"
+                                                    data-menu-style="dropdown-blue"
+                                                    tabindex="-98"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Tipo de Animal <star>*</star></label>
+                                            <select id="idTipoAnimal"
+                                                    name="idTipoAnimal"
+                                                    required
+                                                    class="form-control"
+                                                    data-title="Seleccionar..."
+                                                    data-style="btn-default btn-block"
+                                                    data-menu-style="dropdown-blue"
+                                                    tabindex="-98"></select>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label class="control-label">¿Es una mascota? <star>*</star></label>
+                                            <label class="radio checked" style="margin-bottom:18px">
+                                                <span class="icons">
+                                                    <span class="first-icon fa fa-circle-o"></span>
+                                                    <span class="second-icon fa fa-dot-circle-o"></span>
+                                                </span>
+                                                <input type="radio" data-toggle="radio" name="optionsRadios" value="option1" checked="">Si
+                                            </label>
+                                            <label class="radio">
+                                                <span class="icons">
+                                                    <span class="first-icon fa fa-circle-o"></span>
+                                                    <span class="second-icon fa fa-dot-circle-o"></span>
+                                                </span>
+                                                <input type="radio" data-toggle="radio" name="optionsRadios" value="option2">No
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button type="button" id="btnRegresarEspecies" class="btn btn-default btn-fill  pull-right " style="margin-left:20px;">Cancelar</button>
+                                        <button type="button" id="btnCrearEspecie" class="btn btn-info btn-fill pull-right">Register</button>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </form>
+                            </div><!--card-->
+                        </div><!--col-md-6-->
+                    </div><!--row-->
+                </div><!--container-fluid-->
+            </div><!--content-->
             <footer class="footer">
                 <div class="container-fluid">
                     <nav class="pull-left">
@@ -359,181 +395,57 @@
                 </div>
             </footer>
 
-
         </div>
     </div>
-
-
 
     <!--   Core JS Files and PerfectScrollbar library inside jquery.ui   -->
     <script src="../../assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="../../assets/js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-
     <!--  Forms Validations Plugin -->
     <script src="../../assets/js/jquery.validate.min.js"></script>
-
     <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
     <script src="../../assets/js/moment.min.js"></script>
-
     <!--  Date Time Picker Plugin is included in this js file -->
     <script src="../../assets/js/bootstrap-datetimepicker.js"></script>
-
     <!--  Select Picker Plugin -->
     <script src="../../assets/js/bootstrap-selectpicker.js"></script>
-
     <!--  Checkbox, Radio, Switch and Tags Input Plugins -->
     <script src="../../assets/js/bootstrap-checkbox-radio-switch-tags.js"></script>
-
     <!--  Charts Plugin -->
     <script src="../../assets/js/chartist.min.js"></script>
-
     <!--  Notifications Plugin    -->
     <script src="../../assets/js/bootstrap-notify.js"></script>
-
     <!-- Sweet Alert 2 plugin -->
     <script src="../../assets/js/sweetalert2.js"></script>
-
     <!-- Vector Map plugin -->
     <script src="../../assets/js/jquery-jvectormap.js"></script>
-
     <!--  Google Maps Plugin    -->
     <script src="https://maps.googleapis.com/maps/api/js"></script>
-
     <!-- Wizard Plugin    -->
     <script src="../../assets/js/jquery.bootstrap.wizard.min.js"></script>
-
     <!--  Bootstrap Table Plugin    -->
     <script src="../../assets/js/bootstrap-table.js"></script>
-
     <!--  Plugin for DataTables.net  -->
     <script src="../../assets/js/jquery.datatables.js"></script>
-
     <!--  Full Calendar Plugin    -->
     <script src="../../assets/js/fullcalendar.min.js"></script>
-
     <!-- Light Bootstrap Dashboard Core javascript and methods -->
     <script src="../../assets/js/light-bootstrap-dashboard.js"></script>
-
     <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
     <script src="../../assets/js/demo.js"></script>
     <script src="../../assets/js/utilidades.js"></script>
-
-
+    <!--<script src="./js/especiecrear.js"></script>-->
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#datatables').DataTable({
-                "pagingType": "full_numbers",
-                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                responsive: true,
-                language: {
-                    search: "_INPUT_",
-                    searchPlaceholder: "Buscar coche",
-                },
-                ajax: {
-                    url: 'api/especies',
-                    dataSrc: 'data'
-                },
-                columns: [
-                    {
-                        title: "ID",
-                        data: 'idEspecie',
-                        visible: false
-                    },
-                    {
-                        title: "Clasificación",
-                        data: 'clasificacion.denominacion'
-                    },
-                    {
-                        title: "Tipo Animal",
-                        data: 'tipoAnimal.denominacion'
-                    },
-                    {
-                        title: "Nombre",
-                        data: 'nombre'
-                    },
-                    {
-                        title: "Nº Patas",
-                        data: 'nPatas'
-                    },
-                    {
-                        title: "Mascota",
-                        data: 'esMascotas'
-                    },
-                    {
-                        title: "Actions"
-                    }
-                ],
-                columnDefs: [
-                        {
-                            "render": function (data, type, row) {
-                                var contentHTML = '';
-                                var mascota = row['esMascotas'];
-                                var contentHTML = mascota ? "SI" : "NO";
-                                return contentHTML;
-                        },
-                            "targets": 5
-                        },
-                        {
-                            "render": function (data, type, row) {
-                                var contentHTML = '';
-                                contentHTML = '<a href="#" class="btn btn-simple btn-info btn-icon view"><i class="fa fa-search"></i></a>';
-                                contentHTML += '<a href="#" class="btn btn-simple btn-warning btn-icon edit"><i class="fa fa-edit"></i></a>';
-                                contentHTML += '<a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="fa fa-times"></i></a>';
-                                return contentHTML;
-                            },
-                            "targets": 6
-                        }
-                ],
-                rowCallback: (row, data, index) => {
-                    $('.view', row).unbind('click').bind('click', () => verDetalle(data.id));
-                    $('.edit', row).unbind('click').bind('click', () => editar(data.id));
-                    $('.remove', row).unbind('click').bind('click', () => eliminar(data.id, row));
-                    
-                    return row;
-                }
-            });
-            //la columna nº 5 donde vamos actuar,
-            //row viene los valores que trae la fila
+        $().ready(function () {
 
-            var verDetalle = function (id) {
-               window.location.href = '/especiedetalle.html?id=' + id;
-            }
+            $('#registerFormValidation').validate();
+           // $('#loginFormValidation').validate();
+            //$('#allInputsFormValidation').validate();
 
-            var editar = function (id) {
-               // window.location.href = '/cocheeditar.html?id=' + id;
-            }
-
-            $("#btnCrear").click(function () {
-                window.location.href = '/especiecrear.html';
-            });
-
-            var eliminar = function (id, fila) {
-                if (confirm("¿Estás seguro de eliminar?")) {
-                    var idEspecie = parseInt(id);
-                    //url: `/api/usuarios/${id}` Esto se llama interpolación de caracteres
-                    var urlAPI = '/api/especies/' + idEspecie;
-                    $.ajax({
-                        url: urlAPI,
-                        type: "DELETE",
-                        success: function (respuesta) {
-                            var table = $('#datatables').DataTable();
-                            table.row(fila).remove().draw();
-                            $(fila).fadeOut('slow');
-                            mensajes.showSwal('exito');
-                        },
-                        error: function (respuesta) {
-                            mensajes.showSwal('error');
-                        }
-                    });
-                }
-            }
-
-            var table = $('#datatables').DataTable();
-           
         });
-
     </script>
+
 </body>
 </html>

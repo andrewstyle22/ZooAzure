@@ -261,8 +261,11 @@
     <Content Include="assets\js\moment.min.js" />
     <Content Include="assets\js\sweetalert2.js" />
     <Content Include="assets\js\utilidades.js" />
+    <Content Include="especiecrear.html" />
     <Content Include="Global.asax" />
+    <Content Include="imagenes\loading.gif" />
     <Content Include="index.html" />
+    <Content Include="js\especiecrear.js" />
     <Content Include="plantilla\calendar.html" />
     <Content Include="plantilla\charts.html" />
     <Content Include="plantilla\components\buttons.html" />
@@ -295,6 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClasiAnimalController.cs" />
     <Compile Include="Controllers\ClasificacionesController.cs" />
     <Compile Include="Controllers\EspeciesController.cs" />
     <Compile Include="Controllers\TiposAnimalController.cs" />
@@ -302,6 +306,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClasiAnimal.cs" />
     <Compile Include="Models\Clasificaciones.cs" />
     <Compile Include="Models\Especies.cs" />
     <Compile Include="Models\RespuestaApi.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -17,10 +18,7 @@ namespace ZooAzureApp
             conexion = new SqlConnection();
             try
             {
-                string cadenaConexion = @"Server=.\SQLEXPRESS;
-                                        Database=zoodb;
-                                        User Id=testuser;
-                                        Password = !Curso@2017; ";
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
 
                 conexion.ConnectionString = cadenaConexion;
                 conexion.Open();
@@ -78,7 +76,8 @@ namespace ZooAzureApp
                 especie.tipoAnimal.denominacion = reader["AnimalDenominacion"].ToString();
                 especie.nombre = reader["nombre"].ToString();
                 especie.nPatas = (short)reader["nPatas"];
-                especie.esMascota = (bool)reader["esMascotas"];
+                especie.esMascotas = (bool)reader["esMascotas"];
+                //especie.esMascota = bool.Parse(reader["esMascotas"].ToString());
                 Console.WriteLine(especie);
                 resultados.Add(especie);
             }
@@ -111,7 +110,7 @@ namespace ZooAzureApp
                 especie.tipoAnimal.denominacion = reader["AnimalDenominacion"].ToString();
                 especie.nombre = reader["nombre"].ToString();
                 especie.nPatas = (short) reader["nPatas"];
-                especie.esMascota = (bool) reader["esMascotas"];
+                especie.esMascotas = (bool) reader["esMascotas"];
                 resultados.Add(especie);
             }
             reader.Close();
@@ -152,7 +151,7 @@ namespace ZooAzureApp
             SqlParameter parametroEsMascotas = new SqlParameter();
             parametroEsMascotas.ParameterName = "esMascotas";
             parametroEsMascotas.SqlDbType = SqlDbType.Bit;
-            parametroEsMascotas.SqlValue = especie.esMascota;
+            parametroEsMascotas.SqlValue = especie.esMascotas;
             comando.Parameters.Add(parametroEsMascotas);
 
             int filasAfectadas = comando.ExecuteNonQuery();
@@ -200,7 +199,7 @@ namespace ZooAzureApp
             SqlParameter parametroEsMascotas = new SqlParameter();
             parametroEsMascotas.ParameterName = "esMascotas";
             parametroEsMascotas.SqlDbType = SqlDbType.Bit;
-            parametroEsMascotas.SqlValue = especie.esMascota;
+            parametroEsMascotas.SqlValue = especie.esMascotas;
             comando.Parameters.Add(parametroEsMascotas);
 
             int filasAfectadas = comando.ExecuteNonQuery();
@@ -461,6 +460,53 @@ namespace ZooAzureApp
             int filasAfectadas = comando.ExecuteNonQuery();
 
             return filasAfectadas;
+        }
+
+        public static List<ClasiAnimal> GetClasiAnimal()
+        {
+            List<ClasiAnimal> resultados = new List<ClasiAnimal>();
+            string consultaSQL = "dbo.GetClasiAnimal";
+            // PREPARO UN COMANDO PARA EJECUTAR A LA BASE DE DATOS
+            SqlCommand comando = new SqlCommand(consultaSQL, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = comando.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    ClasiAnimal listClasiAnimal = new ClasiAnimal();
+                    List<Clasificaciones> resultadosClasificaciones = new List<Clasificaciones>();
+                    List<TiposAnimal> resultadosTipoAnimal = new List<TiposAnimal>();
+
+                    if (reader["tipo"].ToString() == "clasificacion")
+                    {
+                        Clasificaciones clasificacion = new Clasificaciones();
+                        clasificacion.idClasificacion = (int)reader["idClasificacion"];
+                        clasificacion.denominacion = reader["denominacion"].ToString();
+
+                        resultadosClasificaciones.Add(clasificacion);
+                        listClasiAnimal.listaMclasificaciones = resultadosClasificaciones;
+                        listClasiAnimal.tipo = "clasificacion";
+                    }
+                    else
+                    {
+                        TiposAnimal tiposAnimal = new TiposAnimal();
+                        tiposAnimal.idTipoAnimal = (long)reader["idTipoAnimal"];
+                        tiposAnimal.denominacion = reader["denominacion"].ToString();
+
+                        resultadosTipoAnimal.Add(tiposAnimal);
+                        listClasiAnimal.listaTipoAnimal = resultadosTipoAnimal;
+                        listClasiAnimal.tipo = "tipoAnimal";
+                    }
+                    resultados.Add(listClasiAnimal);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Reader vacío");
+            }
+            reader.Close();
+            return resultados;
         }
     }
 }
