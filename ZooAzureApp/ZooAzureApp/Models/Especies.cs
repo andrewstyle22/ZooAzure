@@ -12,6 +12,6 @@ namespace ZooAzureApp
         public TiposAnimal tipoAnimal { get; set; }
         public string nombre { get; set; }
         public short nPatas { get; set; }
-        public bool esMascota { get; set; }
+        public bool esMascotas { get; set; }
     }
 }
