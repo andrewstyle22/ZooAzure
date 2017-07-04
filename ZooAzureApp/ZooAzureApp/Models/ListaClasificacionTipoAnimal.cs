@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ZooAzureApp
 {
-    public class ClasiAnimal
+    public class ListaClasificacionTipoAnimal
     {
         public string tipo { get; set; }
         public List<Clasificaciones> listaClasificaciones { get; set; }

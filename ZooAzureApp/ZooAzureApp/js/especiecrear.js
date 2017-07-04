@@ -1,12 +1,10 @@
 ﻿$(document).ready(function () {
    
-   // var urlAPI = '/api/ListaMarcaTC';
+    var urlAPI = '/api/ClasiAnimal';
     // $('.row').append('<div class="loader"><img id="cargarLoading" style="width:30%" src="./imagenes/loading.gif"/></div>');
     //$('.row').append('<div class="loader"></div>');
-    // $(".loader").show();
-    $(".loader").hide();
-   // $(".loader").fadeOut("slow");
-/*    $.get(urlAPI, function (respuesta, estado) {
+     $(".loader").show();
+    $.get(urlAPI, function (respuesta, estado) {
         var cargarSelectMarca = '';
         var cargarSelectCombustible = '';
         // COMPRUEBO EL ESTADO DE LA LLAMADA
@@ -76,7 +74,7 @@
                 mensajes.showSwal('error','ERROR',mensajeError);
             }
         });
-    });*/
+    });
     $('#btnRegresarCoches').click(function () {
         console.log("regresar");
         window.location.href = '/especies.html';

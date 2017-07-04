@@ -36,6 +36,7 @@ namespace ZooAzureApp
             }
         }
 
+
         public static bool EstaLaConexionAbierta()
         {
             return conexion.State == ConnectionState.Open;
@@ -470,6 +471,7 @@ namespace ZooAzureApp
             SqlCommand comando = new SqlCommand(consultaSQL, conexion);
             comando.CommandType = CommandType.StoredProcedure;
             SqlDataReader reader = comando.ExecuteReader();
+           
             if (reader.HasRows)
             {
                 while (reader.Read())
@@ -485,7 +487,7 @@ namespace ZooAzureApp
                         clasificacion.denominacion = reader["denominacion"].ToString();
 
                         resultadosClasificaciones.Add(clasificacion);
-                        listClasiAnimal.listaMclasificaciones = resultadosClasificaciones;
+                        listClasiAnimal.listaClasificaciones = resultadosClasificaciones;
                         listClasiAnimal.tipo = "clasificacion";
                     }
                     else
@@ -507,6 +509,42 @@ namespace ZooAzureApp
             }
             reader.Close();
             return resultados;
+        }
+
+        public static List<ListaClasificacionTipoAnimal> GetClasiTipoAnimal()
+        {
+            List<ListaClasificacionTipoAnimal> resultados = new List<ListaClasificacionTipoAnimal>();
+            string consultaSQL = "dbo.GetClasiAnimal";
+            // PREPARO UN COMANDO PARA EJECUTAR A LA BASE DE DATOS
+            SqlCommand comando = new SqlCommand(consultaSQL, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = comando.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    ListaClasificacionTipoAnimal lCTA = new ListaClasificacionTipoAnimal();
+                    List<Clasificaciones> resultadosClasificaciones = new List<Clasificaciones>();
+                    List<TiposAnimal> resultadosTipoAnimal = new List<TiposAnimal>();
+                    if(reader["tipo"].ToString() == "clasificacion")
+                    {
+                        Clasificaciones clasifcacion = new Clasificaciones();
+                        clasifcacion.idClasificacion = int.Parse(reader["idClasificacion"].ToString());
+                        clasifcacion.denominacion = reader["denominacion"].ToString();
+
+                        resultadosClasificaciones.Add(clasifcacion);
+                        lCTA.listaClasificaciones = resultadosClasificaciones;
+                    }
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Reader vacío");
+            }
+            reader.Close();
+            return resultados;
+
         }
     }
 }

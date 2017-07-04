@@ -301,6 +301,7 @@
     <Compile Include="Controllers\ClasiAnimalController.cs" />
     <Compile Include="Controllers\ClasificacionesController.cs" />
     <Compile Include="Controllers\EspeciesController.cs" />
+    <Compile Include="Controllers\ListaClasificacionTipoAnimalController.cs" />
     <Compile Include="Controllers\TiposAnimalController.cs" />
     <Compile Include="Db\Db.cs" />
     <Compile Include="Global.asax.cs">
@@ -309,6 +310,7 @@
     <Compile Include="Models\ClasiAnimal.cs" />
     <Compile Include="Models\Clasificaciones.cs" />
     <Compile Include="Models\Especies.cs" />
+    <Compile Include="Models\ListaClasificacionTipoAnimal.cs" />
     <Compile Include="Models\RespuestaApi.cs" />
     <Compile Include="Models\TiposAnimal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
