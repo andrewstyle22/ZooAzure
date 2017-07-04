@@ -98,6 +98,7 @@ namespace ZooAzureApp
             comando.Parameters.Add(parametroId);
 
             SqlDataReader reader = comando.ExecuteReader();
+
             while (reader.Read()) {
                 Especies especie = new Especies();
                 especie.idEspecie = (long) reader["idEspecie"];
@@ -269,7 +270,6 @@ namespace ZooAzureApp
             return resultados;
         }
 
-
         public static int InsertarTipoAnimal(TiposAnimal tipoAnimal)
         {
             string respuesta = "";
@@ -417,6 +417,7 @@ namespace ZooAzureApp
             }
             return filaAfectadas;
         }
+
         public static int ActualizarClasificaciones(int id, Clasificaciones clasificacion)
         {
             string procedimiento = "dbo.ActualizarClasificaciones";
