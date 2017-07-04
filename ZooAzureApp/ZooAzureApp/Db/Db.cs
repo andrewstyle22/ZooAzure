@@ -463,54 +463,6 @@ namespace ZooAzureApp
             return filasAfectadas;
         }
 
-        public static List<ClasiAnimal> GetClasiAnimal()
-        {
-            List<ClasiAnimal> resultados = new List<ClasiAnimal>();
-            string consultaSQL = "dbo.GetClasiAnimal";
-            // PREPARO UN COMANDO PARA EJECUTAR A LA BASE DE DATOS
-            SqlCommand comando = new SqlCommand(consultaSQL, conexion);
-            comando.CommandType = CommandType.StoredProcedure;
-            SqlDataReader reader = comando.ExecuteReader();
-           
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    ClasiAnimal listClasiAnimal = new ClasiAnimal();
-                    List<Clasificaciones> resultadosClasificaciones = new List<Clasificaciones>();
-                    List<TiposAnimal> resultadosTipoAnimal = new List<TiposAnimal>();
-
-                    if (reader["tipo"].ToString() == "clasificacion")
-                    {
-                        Clasificaciones clasificacion = new Clasificaciones();
-                        clasificacion.idClasificacion = (int)reader["idClasificacion"];
-                        clasificacion.denominacion = reader["denominacion"].ToString();
-
-                        resultadosClasificaciones.Add(clasificacion);
-                        listClasiAnimal.listaClasificaciones = resultadosClasificaciones;
-                        listClasiAnimal.tipo = "clasificacion";
-                    }
-                    else
-                    {
-                        TiposAnimal tiposAnimal = new TiposAnimal();
-                        tiposAnimal.idTipoAnimal = (long)reader["idTipoAnimal"];
-                        tiposAnimal.denominacion = reader["denominacion"].ToString();
-
-                        resultadosTipoAnimal.Add(tiposAnimal);
-                        listClasiAnimal.listaTipoAnimal = resultadosTipoAnimal;
-                        listClasiAnimal.tipo = "tipoAnimal";
-                    }
-                    resultados.Add(listClasiAnimal);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Reader vacío");
-            }
-            reader.Close();
-            return resultados;
-        }
-
         public static List<ListaClasificacionTipoAnimal> GetClasiTipoAnimal()
         {
             List<ListaClasificacionTipoAnimal> resultados = new List<ListaClasificacionTipoAnimal>();
@@ -529,13 +481,22 @@ namespace ZooAzureApp
                     if(reader["tipo"].ToString() == "clasificacion")
                     {
                         Clasificaciones clasifcacion = new Clasificaciones();
-                        clasifcacion.idClasificacion = int.Parse(reader["idClasificacion"].ToString());
+                        clasifcacion.idClasificacion = int.Parse(reader["id"].ToString());
                         clasifcacion.denominacion = reader["denominacion"].ToString();
 
                         resultadosClasificaciones.Add(clasifcacion);
                         lCTA.listaClasificaciones = resultadosClasificaciones;
-                    }
+                        lCTA.tipo = "clasificacion";
+                    }else {
+                        TiposAnimal tp = new TiposAnimal();
+                        tp.idTipoAnimal = (long) reader["id"];
+                        tp.denominacion = reader["denominacion"].ToString();
 
+                        resultadosTipoAnimal.Add(tp);
+                        lCTA.listaTipoAnimal = resultadosTipoAnimal;
+                        lCTA.tipo = "tipoAnimal";
+                    }
+                    resultados.Add(lCTA);
                 }
             }
             else
