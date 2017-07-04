@@ -1,82 +1,73 @@
 ﻿$(document).ready(function () {
    
-    var urlAPI = '/api/ClasiAnimal';
-    // $('.row').append('<div class="loader"><img id="cargarLoading" style="width:30%" src="./imagenes/loading.gif"/></div>');
-    //$('.row').append('<div class="loader"></div>');
+    var urlAPI = '/api/ListaClasificacionTipoAnimal';
      $(".loader").show();
     $.get(urlAPI, function (respuesta, estado) {
-        var cargarSelectMarca = '';
-        var cargarSelectCombustible = '';
+        var cargarSelectClasi = '';
+        var cargarSelectTipoAnimal = '';
         // COMPRUEBO EL ESTADO DE LA LLAMADA
         if (estado === 'success') {
-            cargarSelectMarca += '<option class="bs-title-option" value="">Seleccione una marca</option>';
-            cargarSelectCombustible += '<option class="bs-title-option"  value="">Seleccionar un combustible</option>';
+            cargarSelectClasi += '<option class="bs-title-option" value="">Seleccione una Clasificación</option>';
+            cargarSelectTipoAnimal += '<option class="bs-title-option"  value="">Seleccionar un tipo de animal</option>';
             $.each(respuesta.data, function (indice, elemento) {
-                if (elemento.tipo === "marca") {
-                    cargarSelectMarca += '<option value="'+elemento.listaMarca[0].id+'">'+elemento.listaMarca[0].denominacion+'</option>';
-                   // console.log(elemento.listaMarca[0].id);
-                   // console.log(elemento.listaMarca[0].denominacion);
-                } else {
-                    cargarSelectCombustible += '<option value="'
-                                                + elemento.listaTipoCombustible[0].id
-                                                + '">'
-                                                + elemento.listaTipoCombustible[0].denominacion
-                                                + '</option>';
+                if (elemento.tipo === "clasificacion") {
+                    cargarSelectClasi += '<option value="' + elemento.listaClasificaciones[0].idClasificacion + '">' + elemento.listaClasificaciones[0].denominacion + '</option>';
 
-                   // console.log(elemento.listaTipoCombustible[0].id);
-                   // console.log(elemento.listaTipoCombustible[0].denominacion);
+                } else {
+                    cargarSelectTipoAnimal += '<option value="'
+                                                + elemento.listaTipoAnimal[0].idTipoAnimal
+                                                + '">'
+                                                + elemento.listaTipoAnimal[0].denominacion
+                                                + '</option>';
                 }
             });
         } else {
             console.log("Error ", respuesta);
         }
-        $("#selectMarca").append(cargarSelectMarca);
-        $("#selectCombustible").append(cargarSelectCombustible);
+        $("#idClasificacion").append(cargarSelectClasi);
+        $("#idTipoAnimal").append(cargarSelectTipoAnimal);
         $(".loader").hide();
     });
 
-    $('#btnCrearCoche').click(function () {
-        var urlAPI2 = '/api/Coches';
-        var fecha = mensajes.dateToString($('#fechaMatriculacion').val());
-        console.log("Fecha: ", fecha);
-        debugger;
-        var selectMarca = document.getElementById("selectMarca");
-        var idMarca = selectMarca.options[selectMarca.selectedIndex].value; 
-        var selectCombustible = document.getElementById("selectCombustible");
-        var idTipo = selectCombustible.options[selectCombustible.selectedIndex].value;
-        var dataNuevoCoche = {
-            matricula: $('#matricula').val(),
-            color: $('#color').val(),
-            cilindrada: $('#cilindrada').val(),
-            nPlazas: $('#nPlazas').val(),
-            fechaMatriculacion: fecha,
-            marca: {
-                id: idMarca
+    $('#btnCrearEspecie').click(function () {
+        var selectClasificacion = document.getElementById("idClasificacion");
+        var idClasificacion = selectClasificacion.options[selectClasificacion.selectedIndex].value;
+        var selectTipoAnimal = document.getElementById("idTipoAnimal");
+        var idTipoAnimal = selectTipoAnimal.options[selectTipoAnimal.selectedIndex].value;
+        var radios = document.getElementsByName("optionsRadios");
+        
+        var mascota = document.querySelector('input[name = "optionsRadios"]:checked').value;
+
+        console.log(mascota);
+        var dataNuevaEspecie = {
+            nombre: $('#nombre').val(),
+            nPatas: $('#nPatas').val(),
+            clasificacion: {
+                idClasificacion: idClasificacion
             },
-            tipoCombustible: {
-                id: idTipo
-            }
+            tipoAnimal: {
+                idTipoAnimal: idTipoAnimal
+            },
+            esMascota: mascota
         };
-        console.log(dataNuevoCoche);
-        //debugger;
+        console.log(dataNuevaEspecie);
         $.ajax({
-            url: '/api/Coches',
+            url: '/api/Especies',
             type: "POST",
             dataType: 'json',
-            data: dataNuevoCoche,
+            data: dataNuevaEspecie,
             success: function (respuesta) {
-                window.location.href = '/coches.html';
+                window.location.href = '/index.html';
             },
             error: function (xhr, textStatus, errorThrown) {
                 var mensajeError = "ERROR: " + JSON.stringify(errorThrown) +
                                   "\n xhr: " + JSON.stringify(xhr) +
                            "\n textStatus: " + JSON.stringify(textStatus);
-                mensajes.showSwal('error','ERROR',mensajeError);
+                mensajes.showSwal('error');
             }
         });
     });
-    $('#btnRegresarCoches').click(function () {
-        console.log("regresar");
-        window.location.href = '/especies.html';
+    $('#btnRegresarEspecies').click(function () {
+        window.location.href = '/index.html';
     });
 });

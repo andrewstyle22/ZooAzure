@@ -487,9 +487,9 @@
                         }
                 ],
                 rowCallback: (row, data, index) => {
-                    $('.view', row).unbind('click').bind('click', () => verDetalle(data.id));
-                    $('.edit', row).unbind('click').bind('click', () => editar(data.id));
-                    $('.remove', row).unbind('click').bind('click', () => eliminar(data.id, row));
+                    $('.view', row).unbind('click').bind('click', () => verDetalle(data.idEspecie));
+                    $('.edit', row).unbind('click').bind('click', () => editar(data.idEspecie));
+                    $('.remove', row).unbind('click').bind('click', () => eliminar(data.idEspecie, row));
                     
                     return row;
                 }
@@ -502,7 +502,7 @@
             }
 
             var editar = function (id) {
-               // window.location.href = '/cocheeditar.html?id=' + id;
+                window.location.href = '/especieeditar.html?id=' + id;
             }
 
             $("#btnCrear").click(function () {
@@ -512,6 +512,8 @@
             var eliminar = function (id, fila) {
                 if (confirm("¿Estás seguro de eliminar?")) {
                     var idEspecie = parseInt(id);
+                    console.log("idEspecie ", idEspecie);
+                    debugger;
                     //url: `/api/usuarios/${id}` Esto se llama interpolación de caracteres
                     var urlAPI = '/api/especies/' + idEspecie;
                     $.ajax({
@@ -529,9 +531,7 @@
                     });
                 }
             }
-
             var table = $('#datatables').DataTable();
-           
         });
 
     </script>
