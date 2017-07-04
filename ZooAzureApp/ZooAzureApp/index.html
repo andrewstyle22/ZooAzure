@@ -471,8 +471,8 @@
                                 var contentHTML = '';
                                 var mascota = row['esMascotas'];
                                 console.log("mascotas ", mascota);
-                                var contentHTML = mascota ? "SI" : "NO";
-                                return contentHTML;
+                                //var contentHTML = mascota ? "SI" : "NO";
+                                return row['esMascotas'];
                             },
                             "targets": 5
                         },
@@ -511,11 +511,12 @@
             $("#btnCrear").click(function () {
                 //window.location.href = '/cochecrear.html';
             });
+
             var eliminar = function (id, fila) {
                 if (confirm("¿Estás seguro de eliminar?")) {
-                    var idCoche = parseInt(id);
+                    var idEspecie = parseInt(id);
                     //url: `/api/usuarios/${id}` Esto se llama interpolación de caracteres
-                    var urlAPI = '/api/especies/' + idCoche;
+                    var urlAPI = '/api/especies/' + idEspecie;
                     $.ajax({
                         url: urlAPI,
                         type: "DELETE",
@@ -526,11 +527,12 @@
                             mensajes.showSwal('exito');
                         },
                         error: function (respuesta) {
-                            mensajes.showSwal('error', 'Error Eliminar', 'Error al eliminar la especie ');
+                            mensajes.showSwal('error');
                         }
                     });
                 }
             }
+
             var table = $('#datatables').DataTable();
            
         });

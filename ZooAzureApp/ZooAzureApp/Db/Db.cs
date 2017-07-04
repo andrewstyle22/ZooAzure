@@ -79,9 +79,10 @@ namespace ZooAzureApp
                 especie.nombre = reader["nombre"].ToString();
                 especie.nPatas = (short)reader["nPatas"];
                 especie.esMascota = (bool)reader["esMascotas"];
+                Console.WriteLine(especie);
                 resultados.Add(especie);
             }
-            reader.Close();
+            //reader.Close();
             return resultados;
         }
         
