@@ -16,10 +16,24 @@
                 console.log("Elemento:  ", elemento);
                 $('#nombre').val(elemento.nombre);
                 $('#nPatas').val(elemento.nPatas);
-                $('#clasificacion').val(elemento.clasificacion.denominacion);
-                $('#tipoAnimal').val(elemento.tipoAnimal.denominacion);
-                var mascota = elemento.esMascotas ? 'SI' : 'NO';
-                //$('#esMascotas').val(mascota);
+                clasificacion = elemento.clasificacion.denominacion;
+                tipoAnimal = elemento.tipoAnimal.denominacion;
+                var mascotas = elemento.esMascotas;// ? document.getElementById("siMascotas").checked = true : document.getElementById("noMascotas").checked = true;
+                var radio = '';
+                console.log("mascotas ", mascotas);
+                if (mascotas) {
+                     radio = document.getElementById("siMascotas");
+                     radio.checked = true;
+                     $("#siMascotas").prop("checked", true);
+                     $("#siMasco").addClass("checked");
+                     $("#siMas").addClass("checked");
+                } else {
+                   radio = document.getElementById("noMascotas");
+                    radio.checked = true;
+                    $("#noMascotas").prop("checked", true);
+                    $("#noMasco").addClass("checked");
+                    $("#noMas").addClass("checked");
+                }
             });
         }
     });
@@ -36,14 +50,25 @@
                 cargarSelectTipoAnimal += '<option class="bs-title-option"  value="">Seleccionar un tipo de animal</option>';
                 $.each(respuesta.data, function (indice, elemento) {
                     if (elemento.tipo === "clasificacion") {
-                        cargarSelectClasi += '<option value="' + elemento.listaClasificaciones[0].idClasificacion + '">' + elemento.listaClasificaciones[0].denominacion + '</option>';
-
+                        if (clasificacion == elemento.listaClasificaciones[0].denominacion) {
+                            cargarSelectClasi += '<option value="' + elemento.listaClasificaciones[0].idClasificacion + '"selected>' + elemento.listaClasificaciones[0].denominacion + '</option>';
+                        } else {
+                            cargarSelectClasi += '<option value="' + elemento.listaClasificaciones[0].idClasificacion + '">' + elemento.listaClasificaciones[0].denominacion + '</option>';
+                        }
                     } else {
-                        cargarSelectTipoAnimal += '<option value="'
+                        if (tipoAnimal == elemento.listaTipoAnimal[0].denominacion) {
+                            cargarSelectTipoAnimal += '<option value="'
                                                     + elemento.listaTipoAnimal[0].idTipoAnimal
-                                                    + '">'
+                                                    + '"selected>'
                                                     + elemento.listaTipoAnimal[0].denominacion
                                                     + '</option>';
+                        } else {
+                            cargarSelectTipoAnimal += '<option value="'
+                                                        + elemento.listaTipoAnimal[0].idTipoAnimal
+                                                        + '">'
+                                                        + elemento.listaTipoAnimal[0].denominacion
+                                                        + '</option>';
+                        }
                     }
                 });
             } else {
