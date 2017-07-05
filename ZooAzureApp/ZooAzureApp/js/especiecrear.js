@@ -63,7 +63,7 @@
                 var mensajeError = "ERROR: " + JSON.stringify(errorThrown) +
                                   "\n xhr: " + JSON.stringify(xhr) +
                            "\n textStatus: " + JSON.stringify(textStatus);
-                mensajes.showSwal('error');
+                mensajes.showSwal('error','error',mensajeError);
             }
         });
     });
