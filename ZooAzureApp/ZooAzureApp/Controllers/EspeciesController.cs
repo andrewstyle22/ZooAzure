@@ -59,8 +59,8 @@ namespace ZooAzureApp
 
         // POST: api/Especies
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Especies especie)
-        {/*http://bitacoraweb.info/como-cargar-dinamicamente-un-select-con-jquery-javascript/*/
+        public RespuestaApi<Especies> Post([FromBody] Especies especie)
+        {/*--http://bitacoraweb.info/como-cargar-dinamicamente-un-select-con-jquery-javascript/ */
             RespuestaApi<Especies> respuesta = new RespuestaApi<Especies>();
             respuesta.datos = especie.nombre;
             respuesta.error = "";
@@ -80,12 +80,12 @@ namespace ZooAzureApp
                 respuesta.totalElementos = 0;
                 respuesta.error = "Error al insertar la especie " + ex.ToString();
             }
-            return Ok(respuesta);
+            return respuesta;
         }
 
         // PUT: api/Especies/5
         [HttpPut]
-        public IHttpActionResult Put(long id, [FromBody] Especies especie)
+        public RespuestaApi<Especies> Put(long id, [FromBody] Especies especie)
         {
             RespuestaApi<Especies> respuesta = new RespuestaApi<Especies>();
             respuesta.datos = especie.nombre;
@@ -102,12 +102,12 @@ namespace ZooAzureApp
                 respuesta.totalElementos = 0;
                 respuesta.error = "Error al actualizar la especie " + ex.ToString();
             }
-            return Ok(respuesta);
+            return respuesta;
         }
 
         // DELETE: api/Especies/5
         [HttpDelete]
-        public IHttpActionResult Delete(long id)
+        public RespuestaApi<Especies> Delete(long id)
         {
             RespuestaApi<Especies> respuesta = new RespuestaApi<Especies>();
             respuesta.datos = "Borrado el id " + id.ToString();
@@ -124,7 +124,7 @@ namespace ZooAzureApp
                 respuesta.totalElementos = 0;
                 respuesta.error = "Error al eliminar la especie con id " + id.ToString() + " ERROR: " + ex.ToString();
             }
-            return Ok(respuesta);
+            return respuesta;
         }
     }
 }

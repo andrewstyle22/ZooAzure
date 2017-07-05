@@ -2,11 +2,12 @@
    
     var id = window.location.search.substring(1).split('=')[1];
     var urlAPI = '/api/Especies/' + id;
+
     var clasificacion = '';
     var tipoAnimal = '';
 
     $(".loader").show();
-    // PREPARAR LA LLAMDA AJAX 
+
     var promise = $.get(urlAPI, function (respuesta, estado) {
 
         if (estado === 'success') {
@@ -18,22 +19,7 @@
                 $('#nPatas').val(elemento.nPatas);
                 clasificacion = elemento.clasificacion.denominacion;
                 tipoAnimal = elemento.tipoAnimal.denominacion;
-                var mascotas = elemento.esMascotas;// ? document.getElementById("siMascotas").checked = true : document.getElementById("noMascotas").checked = true;
-                var radio = '';
-                console.log("mascotas ", mascotas);
-                if (mascotas) {
-                     radio = document.getElementById("siMascotas");
-                     radio.checked = true;
-                     $("#siMascotas").prop("checked", true);
-                     $("#siMasco").addClass("checked");
-                     $("#siMas").addClass("checked");
-                } else {
-                   radio = document.getElementById("noMascotas");
-                    radio.checked = true;
-                    $("#noMascotas").prop("checked", true);
-                    $("#noMasco").addClass("checked");
-                    $("#noMas").addClass("checked");
-                }
+                var mascotas = elemento.esMascotas ? $("#siMascota").addClass("checked") : $("#noMascota").addClass("checked");
             });
         }
     });
@@ -86,24 +72,32 @@
         var selectTipoAnimal = document.getElementById("idTipoAnimal");
         var idTipoAnimal = selectTipoAnimal.options[selectTipoAnimal.selectedIndex].value;
         var radios = document.getElementsByName("optionsRadios");
-        
-        var mascota = document.querySelector('input[name = "optionsRadios"]:checked').value;
+       /* if (document.getElementById("option1").checked == true) {
+            alert("You have selected Option 1");
+        }*/
+        var mascotaEdit;
+        if ($("#noMascota").hasClass("checked")) {
+            mascotaEdit = false;
+        } else {
+            mascotaEdit = true;
+        }
+        console.log("Mascota ", mascotaEdit);
+       // var mascota = document.querySelector('input[name = "optionsRadios"]:checked').value;
 
-        console.log(mascota);
+        console.log(mascotaEdit);
         var dataNuevaEspecie = {
             nombre: $('#nombre').val(),
             nPatas: $('#nPatas').val(),
+            esMascotas: true,
             clasificacion: {
                 idClasificacion: idClasificacion
             },
             tipoAnimal: {
                 idTipoAnimal: idTipoAnimal
-            },
-            esMascota: mascota
+            }
         };
-        console.log(dataNuevaEspecie);
         $.ajax({
-            url: '/api/Especies',
+            url: '/api/Especies/' + id,
             type: "PUT",
             dataType: 'json',
             data: dataNuevaEspecie,
