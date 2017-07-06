@@ -88,7 +88,7 @@
         var dataNuevaEspecie = {
             nombre: $('#nombre').val(),
             nPatas: $('#nPatas').val(),
-            esMascotas: true,
+            esMascotas: mascotaEdit,
             clasificacion: {
                 idClasificacion: idClasificacion
             },
