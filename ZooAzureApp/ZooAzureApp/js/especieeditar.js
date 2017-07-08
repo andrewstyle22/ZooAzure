@@ -32,8 +32,8 @@
             var cargarSelectTipoAnimal = '';
             // COMPRUEBO EL ESTADO DE LA LLAMADA
             if (estado === 'success') {
-                cargarSelectClasi += '<option class="bs-title-option" value="">Seleccione una Clasificación</option>';
-                cargarSelectTipoAnimal += '<option class="bs-title-option"  value="">Seleccionar un tipo de animal</option>';
+                //cargarSelectClasi += '<option class="bs-title-option" value="">Seleccione una Clasificación</option>';
+                //cargarSelectTipoAnimal += '<option class="bs-title-option"  value="">Seleccionar un tipo de animal</option>';
                 $.each(respuesta.data, function (indice, elemento) {
                     if (elemento.tipo === "clasificacion") {
                         if (clasificacion == elemento.listaClasificaciones[0].denominacion) {
