@@ -267,6 +267,7 @@
     <Content Include="Global.asax" />
     <Content Include="imagenes\loading.gif" />
     <Content Include="index.html" />
+    <Content Include="js\asyncawait.js" />
     <Content Include="js\especieeditar.js" />
     <Content Include="js\especiecrear.js" />
     <Content Include="js\especiedetalle.js" />
